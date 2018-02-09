@@ -52,19 +52,19 @@ Menu.prototype = Object.create(Container.prototype);
 Menu.prototype.constructor = Menu;
 
 Menu.prototype.render = function () {
-    var elem = this.elem || 'ul';
-    var ul = document.createElement(elem);
+    var elemName = this.elem || 'ul';
+    var elem = document.createElement(elemName);
 
-    if (this.id) ul.id = this.id;
-    if (this.className) ul.classList.add(this.className);
+    if (this.id) elem.id = this.id;
+    if (this.className) elem.classList.add(this.className);
 
     for (var i = 0; i < this.items.length; i++) {
         if (this.items[i] instanceof MenuItem) {
-            ul.appendChild(this.items[i].render());
+            elem.appendChild(this.items[i].render());
         }
     }
 
-    return ul;
+    return elem;
 };
 
 
