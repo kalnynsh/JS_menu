@@ -52,7 +52,9 @@ function _inherits(subClass, superClass) {
     });
 
     if (superClass) {
-        Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : (subClass.__proto__ = superClass);
+        Object.setPrototypeOf ?
+            Object.setPrototypeOf(subClass, superClass) :
+            subClass.__proto__ = superClass;
     }
 }
 
@@ -107,10 +109,10 @@ var MenuItem = (function (_Container) {
     _createClass(MenuItem, [{
         key: "render",
         value: function render() {
-            var elem = document.createElement(_this.elemName);
+            var elem = document.createElement(this.elemName);
             var a = document.createElement('a');
-            a.href = _this.href;
-            a.textContent = _this.hrefLabel;
+            a.href = this.href;
+            a.textContent = this.hrefLabel;
 
             elem.appendChild(a);
 
@@ -145,12 +147,12 @@ var Menu = (function (_Container2) {
     _createClass(Menu, [{
         key: "render",
         value: function render() {
-            var ul = document.createElement(_this2.elemName);
-            ul.id = _this2.id;
-            ul.classList.add(_this2.className);
-            for (var i = 0; i < _this2.items.length; i++) {
-                if (_this2.items[i] instanceof MenuItem) {
-                    ul.appendChild(_this2.items[i].render());
+            var ul = document.createElement(this.elemName);
+            ul.id = this.id;
+            ul.classList.add(this.className);
+            for (var i = 0; i < this.items.length; i++) {
+                if (this.items[i] instanceof MenuItem) {
+                    ul.appendChild(this.items[i].render());
                 }
             }
 
@@ -161,4 +163,22 @@ var Menu = (function (_Container2) {
     return Menu;
 })(Container);
 
-//
+// Using
+window.onload = function () {
+    var container = this.document.querySelector(".container");
+    console.dir(container);
+
+    var menuItem1 = new MenuItem('/', 'Главная');
+    var menuItem2 = new MenuItem('/catalog', 'Каталог');
+    var menuItem3 = new MenuItem('/about', 'О нас');
+
+    console.dir(menuItem1);
+
+    var menu = new Menu('ul', 'main-menu-id', 'main-menu', [
+        menuItem1, menuItem2, menuItem3
+    ]);
+
+    console.dir(menu);
+
+    container.appendChild(menu.render());
+};
