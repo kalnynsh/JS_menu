@@ -42,20 +42,49 @@ MenuItem.prototype.render = function () {
 };
 
 
+function Menu(menuElem, menuClass, menuId, menuItems) {
+    Container.call(this, menuElem, menuClass, menuId);
+
+    this.items = menuItems;
+}
+
+Menu.prototype = Object.create(Container.prototype);
+Menu.prototype.constructor = Menu;
+
+Menu.prototype.render = function () {
+    var elem = this.elem || 'ul';
+    var ul = document.createElement(elem);
+
+    if (this.id) ul.id = this.id;
+    if (this.className) ul.classList.add(this.className);
+
+    for (var i = 0; i < this.items.length; i++) {
+        if (this.items[i] instanceof MenuItem) {
+            ul.appendChild(this.items[i].render());
+        }
+    }
+
+    return ul;
+};
+
+
 // Use
 window.onload = function () {
     var content = document.querySelector('.content');
-    var divContainer = new Container('div', 'content-id', 'content-class');
-    var div = divContainer.render();
-    div.innerHTML = '<h3>div element</h3>';
 
-    for (var key in divContainer) {
-        div.innerHTML += '<p>' + key + ' = ' + divContainer[key] + '</p>';
-    }
+    var item1 = new MenuItem('li', 'item-cls', 'item-data', '/', 'Главная');
+    var item2 = new MenuItem('li', 'item-cls', 'item-data', '/catalog', 'Каталог');
+    var item3 = new MenuItem('li', 'item-cls', 'item-data', '/about', 'О нас');
 
-    console.dir(div);
+    var menu = new Menu('ul', 'main-menu', 'menu-id', [
+        item1, item2, item3
+    ]);
 
+    // for (var key in divContainer) {
+    //     div.innerHTML += '<p>' + key + ' = ' + divContainer[key] + '</p>';
+    // }
 
+    console.dir(menu);
 
-    content.appendChild(div);
+    content.appendChild(menu.render());
 };
