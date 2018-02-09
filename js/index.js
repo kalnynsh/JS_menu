@@ -72,9 +72,9 @@ Menu.prototype.render = function () {
 window.onload = function () {
     var content = document.querySelector('.content');
 
-    var item1 = new MenuItem('li', 'item-cls', 'item-data', '/', 'Главная');
-    var item2 = new MenuItem('li', 'item-cls', 'item-data', '/catalog', 'Каталог');
-    var item3 = new MenuItem('li', 'item-cls', 'item-data', '/about', 'О нас');
+    var item1 = new MenuItem('li', 'main-menu__item', 'home', '/', 'Главная');
+    var item2 = new MenuItem('li', 'main-menu__item', 'catalog', '/catalog', 'Каталог');
+    var item3 = new MenuItem('li', 'main-menu__item', 'about', '/about', 'О нас');
 
     var menu = new Menu('ul', 'main-menu', 'menu-id', [
         item1, item2, item3
