@@ -15,6 +15,7 @@ Container.prototype.render = function () {
     return containerElem;
 };
 
+Container.prototype.remove = function () {};
 
 function MenuItem(itemElem, itemClass, itemData, itemHref, itemHrefLabel) {
     Container.call(this, itemElem, itemClass);
