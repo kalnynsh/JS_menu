@@ -31,7 +31,7 @@ function _possibleConstructorReturn(self, call) {
             "this hasn't been initialised - super() hasn't been called"
         );
     }
-    return (call && typeof call === "object" || typeof call === "function") ? call : self;
+    return (call && (typeof call === "object" || typeof call === "function")) ? call : self;
 }
 
 function _inherits(subClass, superClass) {
@@ -84,3 +84,39 @@ var Container = (function () {
 
     return Container;
 })();
+
+var MenuItem = (function (_Container) {
+    _inherits(MenuItem, _Container);
+
+    function MenuItem(itemElem, itemClassName, itemHref, itemHrefLabel) {
+        _classCallCheck(this, MenuItem);
+
+        var _this = _possibleConstructorReturn(
+            this,
+            (MenuItem.__proto__ || Object.getPrototypeOf(MenuItem)).call(this)
+        );
+        _this.elemName = itemElem || 'li';
+        _this.className = itemClassName || 'menu-item';
+        _this.href = itemHref || '#';
+        _this.hrefLabel = itemHrefLabel || 'Link';
+
+        return _this;
+    }
+
+    _createClass(MenuItem, [{
+        key: "render",
+        value: function render() {
+            var elem = document.createElement(_this.elemName);
+            var a = document.createElement('a');
+            a.href = _this.href;
+            a.textContent = _this.hrefLabel;
+
+            elem.appendChild(a);
+
+            return elem;
+        }
+    }]);
+
+    return MenuItem;
+
+})(Container);
