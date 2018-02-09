@@ -85,6 +85,7 @@ var Container = (function () {
     return Container;
 })();
 
+
 var MenuItem = (function (_Container) {
     _inherits(MenuItem, _Container);
 
@@ -120,3 +121,44 @@ var MenuItem = (function (_Container) {
     return MenuItem;
 
 })(Container);
+
+
+var Menu = (function (_Container2) {
+    _inherits(Menu, _Container2);
+
+    function Menu(menuElem, menuId, menuClass, menuItems) {
+        _classCallCheck(this, Menu);
+
+        var _this2 = _possibleConstructorReturn(
+            this,
+            (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this)
+        );
+
+        _this2.elemName = menuElem || "ul";
+        _this2.id = menuId;
+        _this2.className = menuClass || "";
+        _this2.items = menuItems;
+
+        return _this2;
+    }
+
+    _createClass(Menu, [{
+        key: "render",
+        value: function render() {
+            var ul = document.createElement(_this2.elemName);
+            ul.id = _this2.id;
+            ul.classList.add(_this2.className);
+            for (var i = 0; i < _this2.items.length; i++) {
+                if (_this2.items[i] instanceof MenuItem) {
+                    ul.appendChild(_this2.items[i].render());
+                }
+            }
+
+            return ul;
+        }
+    }]);
+
+    return Menu;
+})(Container);
+
+//
