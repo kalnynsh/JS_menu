@@ -15,7 +15,20 @@ Container.prototype.render = function () {
     return containerElem;
 };
 
-Container.prototype.remove = function () {};
+Container.prototype.remove = function () {
+    var elem;
+    if (this.id) {
+        elem = document.getElementById(this.id);
+        elem.remove();
+        return true;
+    } else if (this.className) {
+        elem = document.querySelector("." + this.className);
+        elem.remove();
+        return true;
+    }
+    console.log('For remove element must have id or class name');
+    return false;
+};
 
 function MenuItem(itemElem, itemClass, itemData, itemHref, itemHrefLabel) {
     Container.call(this, itemElem, itemClass);
@@ -81,11 +94,26 @@ window.onload = function () {
         item1, item2, item3
     ]);
 
+    content.appendChild(menu.render());
+    // For MenuItems only remove first query selected element by class
+    // setTimeout(function () {
+    //     item2.remove();
+    // }, 2000);
+
+
+    // Container test - begin
+    // var divContainer = new Container('div', 'property', 'div-id');
+    // var div = divContainer.render();
+
     // for (var key in divContainer) {
     //     div.innerHTML += '<p>' + key + ' = ' + divContainer[key] + '</p>';
     // }
+    // content.appendChild(div);
 
-    console.dir(menu);
+    // console.dir(divContainer);
+    // setTimeout(function () {
+    //     divContainer.remove();
+    // }, 2000);
+    // Container test - end
 
-    content.appendChild(menu.render());
 };
