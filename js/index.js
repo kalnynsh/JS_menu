@@ -86,6 +86,14 @@ Menu.prototype.render = function () {
 window.onload = function () {
     var content = document.querySelector('.content');
 
+    var itemA1 = new MenuItem('li', 'menu1__item', 'home', '/', 'Главная');
+    var itemA2 = new MenuItem('li', 'menu1__item', 'catalog', '/catalog', 'Каталог');
+    var itemA3 = new MenuItem('li', 'menu1__item', 'about', '/about', 'О нас');
+    var itemArrayA = [itemA1, itemA2, itemA3];
+    var menu1 = new Menu('ul', 'menu1', '', itemArrayA);
+
+    content.append(menu1.render());
+
     var item1 = new MenuItem('li', 'main-menu__item', 'home', '/', 'Главная');
     var item2 = new MenuItem('li', 'main-menu__item', 'catalog', '/catalog', 'Каталог');
     var item3 = new MenuItem('li', 'main-menu__item', 'about', '/about', 'О нас');
@@ -99,6 +107,15 @@ window.onload = function () {
     // setTimeout(function () {
     //     item2.remove();
     // }, 2000);
+
+    var itemB1 = new MenuItem('li', 'breadcrumbs__item', 'home', '/', 'Главная');
+    var itemB2 = new MenuItem('li', 'breadcrumbs__item', 'catalog', '/catalog', 'Каталог');
+    var itemB3 = new MenuItem('li', 'breadcrumbs__item', 'about', '/about', 'О нас');
+
+    var itemArray = [itemB1, itemB2, itemB3];
+    var menuBreadcrumbs = new Menu('ul', 'breadcrumbs', '', itemArray);
+
+    content.append(menuBreadcrumbs.render());
 
 
     // Container test - begin
