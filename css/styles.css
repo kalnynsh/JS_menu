@@ -67,7 +67,7 @@ body {
 
 .menu1 {
     margin: 0 0 15px 0;
-    background-color: linear-gradient(to bottom, #fff, #A2C6E8);
+    background-color: linear-gradient(to bottom, rgb(131, 184, 184), rgb(30, 41, 70));
     border: 1px solid #999;
     padding: 0 5px;
     font: 14px sans-serif;
@@ -76,7 +76,12 @@ body {
 
 .menu1__item {
     display: inline-block;
-    border-right: 1px solid #fff;
+    border-right: 1px solid rgba(0, 0, 0, 0.75);
+}
+
+.main-menu__item_active {
+    background-color: #006bc97a;
+    color: #eaeaea;
 }
 
 .menu1__item a {
@@ -90,4 +95,97 @@ body {
 .menu1__item a:hover {
     background-color: #006cc9;
     color: #eaeaea;
+}
+
+.kitchen-menu {
+    width: 20%;
+    list-style: none;
+    margin: 15px 0;
+    padding: 0 15px;
+    background: linear-gradient(to bottom, rgb(247, 244, 244), #abbdbd);
+    /* Градиент */
+    border: 1px solid #999;
+    border-radius: 1px;
+    /* Параметры рамки */
+    padding: 0 5px;
+    /* Поля */
+    font: 14px sans-serif;
+    /* Параметры шрифта */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Тень под меню */
+}
+
+.kitchen-menu__item1,
+.kitchen-menu__item2 {
+    display: inline-block;
+    /* Выстраиваем по горизонтали */
+    border-right: 1px solid #fff;
+    /* Белая линия справа */
+    position: relative;
+    /* Относительное позиционирование */
+    margin: 0;
+    padding: 0;
+}
+
+.kitchen-menu a {
+    text-decoration: none;
+    /* Убираем подчёркивание */
+    color: #4c4c4c;
+    /* Цвет ссылок */
+    display: block;
+    /* Блочные ссылки */
+}
+
+.kitchen-menu__item1 a,
+.kitchen-menu__item2 a {
+    padding: 10px 15px;
+    /* Поля */
+    border-right: 1px solid #d8d8d8;
+    /* Серая линия справа */
+    position: relative;
+    /* Относительное позиционирование */
+    z-index: 3;
+    /* Выводим поверх остальных элементов */
+    text-overflow: clip;
+}
+
+.kitchen-menu__item1:hover::before {
+    content: '';
+    top: 0;
+    left: 0;
+    box-shadow: 0 5px 10px #666;
+    /* Параметры тени */
+    position: absolute;
+}
+
+.kitchen-menu__item2 a {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.kitchen-menu ul {
+    display: none;
+    /* Прячем подменю */
+    position: absolute;
+    /* Абсолютное позиционирование */
+    width: auto;
+    /* Ширина подменю */
+    background-color: #fff;
+    /* Цвет фона */
+    box-shadow: 0 0 10px #666;
+    /* Параметры тени */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.kitchen-menu__item2 a:hover {
+    background-color: #008df2;
+    /* Цвет фона */
+    color: #fff;
+    /* Цвет текста */
+}
+
+.kitchen-menu li:hover ul {
+    display: block;
+    /* вывод подменю при наведении курсора мыши на пункты меню */
 }
