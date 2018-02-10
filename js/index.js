@@ -107,10 +107,10 @@ Menu2Levels.prototype.render = function () {
             liL1 = this.items1[i].render();
         }
 
-        if (this.items2.length > 0) {
-            for (var j = 0; j < this.items2.length; j++) {
-                if (this.items2[j] instanceof MenuItem) {
-                    ul2.appendChild(this.items2[j].render());
+        if (this.items2[i].length > 0) {
+            for (var j = 0; j < this.items2[i].length; j++) {
+                if (this.items2[i][j] instanceof MenuItem) {
+                    ul2.appendChild(this.items2[i][j].render());
                 }
             }
             liL1.appendChild(ul2);
@@ -121,7 +121,6 @@ Menu2Levels.prototype.render = function () {
 
     return elem;
 };
-
 
 
 // Use
@@ -178,22 +177,46 @@ window.onload = function () {
     // 1 level Menu test end
 
     // Menu2Levels test
-    var menuL1ItemsArray = [];
+    var menuL1ItemsArray = [
+        [],
+        []
+    ];
     var itemL1n1 = new MenuItem('li', 'kitchen-menu__item1', 'russian', '#', 'Русская кухня');
-    menuL1ItemsArray.push(itemL1n1);
+    var itemL1n2 = new MenuItem('li', 'kitchen-menu__item1', 'ukrainian', '#', 'Украинская кухня');
+    menuL1ItemsArray.concat(itemL1n1, itemL1n2);
 
     var menuL2ItemsArray = [];
-    var itemL2n1 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_1', '#', 'Бефстроганов');
-    menuL2ItemsArray.push(itemL2n1);
+    // [0][i]
+    var itemL2n11 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_11', '#', 'Бефстроганов');
+    menuL2ItemsArray[0][0] = itemL2n11;
 
-    var itemL2n2 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_2', '#', 'Гусь с яблоками');
-    menuL2ItemsArray.push(itemL2n2);
+    var itemL2n12 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_12', '#', 'Гусь с яблоками');
+    menuL2ItemsArray[0][1] = itemL2n12;
 
-    var itemL2n3 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_3', '#', 'Крупеник новгородский');
-    menuL2ItemsArray.push(itemL2n3);
+    var itemL2n13 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_13', '#', 'Крупеник новгородский');
+    menuL2ItemsArray[0][2] = itemL2n13;
 
-    var itemL2n4 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_4', '#', 'Раки по-русски');
-    menuL2ItemsArray.push(itemL2n4);
+    var itemL2n14 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_14', '#', 'Раки по-русски');
+    menuL2ItemsArray[0][3] = itemL2n14;
+
+    // [1][i] 
+    var itemL2n21 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_21', '#', 'Вареники');
+    menuL2ItemsArray[1][0] = itemL2n21;
+
+    var itemL2n22 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_22', '#', 'Жаркое по-харьковски');
+    menuL2ItemsArray[1][1] = itemL2n22;
+
+    var itemL2n23 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_23', '#', 'Капустняк черниговский');
+    menuL2ItemsArray[1][2] = itemL2n23;
+
+    var itemL2n24 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_24', '#', 'Потапцы с помидорами');
+    menuL2ItemsArray[1][3] = itemL2n24;
+
+    // for (var i = 0; i < menuL2ItemsArray.length; i++) {
+    //     for (var j = 0; i < menuL2ItemsArray[i].length; j++) {
+    //         menuL2ItemsArray[i][j] = 
+    //     }
+    // }
 
     var muneKitchens = new Menu2Levels(
         'ul', 'kitchen-menu', 'kitchen-menu-id', menuL1ItemsArray, menuL2ItemsArray);
