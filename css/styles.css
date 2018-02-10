@@ -98,7 +98,7 @@ body {
 }
 
 .kitchen-menu {
-    width: 20%;
+    width: auto;
     list-style: none;
     margin: 15px 0;
     padding: 0 15px;
@@ -119,12 +119,15 @@ body {
 .kitchen-menu__item2 {
     display: inline-block;
     /* Выстраиваем по горизонтали */
-    border-right: 1px solid #fff;
-    /* Белая линия справа */
     position: relative;
     /* Относительное позиционирование */
     margin: 0;
     padding: 0;
+}
+
+.kitchen-menu__item1 {
+    border-right: 1px solid #fff;
+    /* Белая линия справа */
 }
 
 .kitchen-menu a {
@@ -183,9 +186,11 @@ body {
     /* Цвет фона */
     color: #fff;
     /* Цвет текста */
+    transition: background-color .2s ease;
 }
 
 .kitchen-menu li:hover ul {
     display: block;
     /* вывод подменю при наведении курсора мыши на пункты меню */
+    transition: display .1s ease;
 }
