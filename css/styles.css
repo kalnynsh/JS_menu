@@ -11,7 +11,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 1% 2%;
 }
@@ -100,12 +100,15 @@ body {
 /* Kitchen menu begin */
 
 .kitchen-menu {
-    width: auto;
-    list-style: none;
-    margin: 15px 0;
+    width: 200px;
+    height: auto;
+    position: relative;
+    top: 0;
+    left: auto;
+    margin: 15px 150px 15px 0;
     padding: 0;
     /* Поля */
-    background: linear-gradient(to bottom, rgb(247, 244, 244), #abbdbd);
+    list-style: none;
     /* Градиент */
     border: 1px solid #999;
     border-radius: 1px;
@@ -116,19 +119,30 @@ body {
     /* Тень под меню */
 }
 
-.kitchen-menu__item1,
-.kitchen-menu__item2 {
-    display: inline-block;
+.kitchen-menu__item1 {
+    display: block;
     /* Выстраиваем по горизонтали */
     position: relative;
     /* Относительное позиционирование */
+    top: 0;
+    left: 0;
     margin: 0;
     padding: 0;
-}
-
-.kitchen-menu__item1 {
+    border-bottom: 1px solid #999;
     border-right: 1px solid #fff;
     /* Белая линия справа */
+    background: linear-gradient(to bottom, rgb(247, 244, 244), #BFD3D3);
+}
+
+.kitchen-menu__item2 {
+    display: block;
+    /* Выстраиваем по горизонтали */
+    position: relative;
+    /* Абсолютное позиционирование */
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .kitchen-menu a {
@@ -150,7 +164,8 @@ body {
     /* Относительное позиционирование */
     z-index: 3;
     /* Выводим поверх остальных элементов */
-    text-overflow: clip;
+    text-overflow: ellipsis;
+    /* Если текст не помещается то "..."*/
 }
 
 .kitchen-menu__item1:hover::before {
@@ -164,15 +179,20 @@ body {
 
 .kitchen-menu__item2 a {
     border-bottom: 1px solid #eaeaea;
+    height: auto;
 }
 
 .kitchen-menu ul {
+    width: auto;
+    /* Ширина подменю */
+    height: auto;
+    /*display: block;*/
     display: none;
     /* Прячем подменю */
     position: absolute;
     /* Абсолютное позиционирование */
-    width: auto;
-    /* Ширина подменю */
+    top: 0;
+    left: calc(100% + 4px);
     background-color: #fff;
     /* Цвет фона */
     box-shadow: 0 0 10px #666;
@@ -190,10 +210,29 @@ body {
     transition: background-color .2s ease;
 }
 
-.kitchen-menu li:hover ul {
+/*.kitchen-menu li:hover ul {
+    display: block;
+     вывод подменю при наведении курсора мыши на пункты меню
+    transition: display .1s ease;
+}*/
+
+.kitchen-menu__item1:hover ul {
     display: block;
     /* вывод подменю при наведении курсора мыши на пункты меню */
     transition: display .1s ease;
 }
 
 /* Kitchen menu end */
+
+/* Gelary begin */
+
+.gallery {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.gallery__item {
+    margin: 15px;
+}
+
+/* Gelary end */
