@@ -96,8 +96,8 @@ Menu2Levels.prototype.constructor = Menu2Levels;
 Menu2Levels.prototype.render = function () {
     var elemName = this.elem || "ul";
     var elem = document.createElement(elemName);
-    var ul2 = document.createElement("ul");
     var liL1;
+    var ul2;
 
     if (this.id) elem.id = this.id;
     if (this.className) elem.classList.add(this.className);
@@ -108,6 +108,7 @@ Menu2Levels.prototype.render = function () {
         }
 
         if (this.items2[i].length > 0) {
+            ul2 = document.createElement("ul");
             for (var j = 0; j < this.items2[i].length; j++) {
                 if (this.items2[i][j] instanceof MenuItem) {
                     ul2.appendChild(this.items2[i][j].render());
@@ -177,17 +178,20 @@ window.onload = function () {
     // 1 level Menu test end
 
     // Menu2Levels test
-    var menuL1ItemsArray = [
+    var menuL1ItemsArray = [];
+    var itemL1n1 = new MenuItem('li', 'kitchen-menu__item1', 'russian', '#', 'Русская кухня');
+    var itemL1n2 = new MenuItem('li', 'kitchen-menu__item1', 'ukrainian', '#', 'Украинская кухня');
+    menuL1ItemsArray.push(itemL1n1);
+    menuL1ItemsArray.push(itemL1n2);
+
+    var menuL2ItemsArray = [
         [],
         []
     ];
-    var itemL1n1 = new MenuItem('li', 'kitchen-menu__item1', 'russian', '#', 'Русская кухня');
-    var itemL1n2 = new MenuItem('li', 'kitchen-menu__item1', 'ukrainian', '#', 'Украинская кухня');
-    menuL1ItemsArray.concat(itemL1n1, itemL1n2);
-
-    var menuL2ItemsArray = [];
     // [0][i]
     var itemL2n11 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_11', '#', 'Бефстроганов');
+    this.console.dir(itemL2n11);
+
     menuL2ItemsArray[0][0] = itemL2n11;
 
     var itemL2n12 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_12', '#', 'Гусь с яблоками');
@@ -211,12 +215,6 @@ window.onload = function () {
 
     var itemL2n24 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_24', '#', 'Потапцы с помидорами');
     menuL2ItemsArray[1][3] = itemL2n24;
-
-    // for (var i = 0; i < menuL2ItemsArray.length; i++) {
-    //     for (var j = 0; i < menuL2ItemsArray[i].length; j++) {
-    //         menuL2ItemsArray[i][j] = 
-    //     }
-    // }
 
     var muneKitchens = new Menu2Levels(
         'ul', 'kitchen-menu', 'kitchen-menu-id', menuL1ItemsArray, menuL2ItemsArray);
