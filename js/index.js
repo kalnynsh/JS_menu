@@ -190,8 +190,6 @@ window.onload = function () {
     ];
     // [0][i]
     var itemL2n11 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_11', '#', 'Бефстроганов');
-    this.console.dir(itemL2n11);
-
     menuL2ItemsArray[0][0] = itemL2n11;
 
     var itemL2n12 = new MenuItem('li', 'kitchen-menu__item2', 'foodstuff_12', '#', 'Гусь с яблоками');
@@ -219,6 +217,8 @@ window.onload = function () {
     var muneKitchens = new Menu2Levels(
         'ul', 'kitchen-menu', 'kitchen-menu-id', menuL1ItemsArray, menuL2ItemsArray);
 
-    content.append(muneKitchens.render());
+    var gallery_menu = document.querySelector(".gallery-menu");
+
+    gallery_menu.append(muneKitchens.render());
 
 };
